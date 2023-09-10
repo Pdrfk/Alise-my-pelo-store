@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cadastro de Usuário</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 25px;
+            padding-right: 50px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Formulário */
+        form {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Botão para mostrar a senha */
+        .show-password-button {
+            text-align: right;
+            font-size: 14px;
+            margin-top: -15px; /* Adicionei esta margem negativa para posicionar abaixo do campo de senha */
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+        }
+
+        .show-password-button:hover {
+            color: #2587b4;
+        }
+
+        button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-bottom: 15px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        /* Link para a página de login */
+        .login-link {
+            margin-top: 10px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .login-link:hover {
+            color: #2587b4;
+        }
+
+        /* Estilos para a medição de força da senha */
+        .password-strength {
+            margin-top: 10px;
+            position: relative;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 3px;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0;
+            border-radius: 3px;
+            transition: width 0.3s;
+        }
+
+        .strength-text {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Usuário</h1>
+        <form action="confirmacao.html" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+            <div class="password-strength">
+                <div class="strength-meter"></div>
+                <div class="strength-text"></div>
+            </div>
+
+            <label for="confirm-senha">Confirmar Senha:</label>
+            <input type="password" id="confirm-senha" name="confirm-senha" required>
+
+            <a class="show-password-button" href="javascript:void(0);" onclick="mostrarSenha()">Mostrar Senha</a>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <a class="login-link" href="login.html">Já tem uma conta? Faça login aqui.</a>
+    </div>
+
+    <script>
+        function mostrarSenha() {
+            const senhaInput = document.getElementById("senha");
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+            } else {
+                senhaInput.type = "password";
+            }
+        }
+
+        const senhaInput = document.getElementById("senha");
+        const confirmSenhaInput = document.getElementById("confirm-senha");
+        const strengthMeter = document.querySelector(".strength-meter");
+        const strengthText = document.querySelector(".strength-text");
+
+        senhaInput.addEventListener("input", function () {
+            const password = senhaInput.value;
+            const result = zxcvbn(password);
+
+            strengthMeter.style.width = result.score * 25 + "%";
+            strengthText.textContent = `Força da Senha: ${result.score + 1}/5`;
+
+            if (result.score < 3) {
+                strengthText.style.color = "red";
+            } else {
+                strengthText.style.color = "green";
+            }
+        });
+
+        confirmSenhaInput.addEventListener("input", function () {
+            if (senhaInput.value !== confirmSenhaInput.value) {
+                confirmSenhaInput.setCustomValidity("As senhas não coincidem.");
+            } else {
+                confirmSenhaInput.setCustomValidity("");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Alise my pelo store</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 45px;
+            text-align: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            border: 1px solid transparent;
+            padding: 5px 10px;
+            transition: border-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            border-color: #3498db; /* Cor da borda ao passar o mouse */
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Produtos */
+        .product, .product2, .product3, .product4 {
+            display: inline-block;
+            width: calc(25% - 20px);
+            margin: 35px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .product img, .product2 img, .product3 img, .product4 img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .product h3, .product2 h3, .product3 h3, .product4 h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .product p, .product2 p, .product3 p, .product4 p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #777;
+        }
+
+        .product button, .product2 button, .product3 button, .product4 button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .product button:hover, .product2 button:hover, .product3 button:hover, .product4 button:hover {
+            background-color: #555;
+        }
+
+        /* Em alta */
+        .Emalta {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #010101;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        /* Preço */
+        .product .price, .product2 .price, .product3 .price, .product4 .price {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alise my pelo store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página Inicial</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="page-home">
+        <section class="products-from-china">
+            <h2>Alise my pelo products</h2>
+            <div class="product">
+                <img src="china-product1.jpg" alt="Produto 1">
+                <h3 style="color: #010101;">Alise meu pelo <strong>Preto</strong></h3>
+                <p>Alisa meu pelo preto ➡️ alisa meu pelo, preto</p>
+                <div class="price" style="color: #3498db;">R$ 49,99</div>
+                <button style="background-color: #010101;">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product2">
+                <img src="china-product1.jpg" alt="Produto 2">
+                <h3 style="color: #010101;">Alise meu pelo <strong>Castanho</strong></h3>
+                <p>Alisa meu pelo castanho ➡️ alisa meu pelo, castanho</p>
+                <div class="price" style="color: #3498db;">R$ 59,99</div>
+                <button style="background-color: #010101;">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product3">
+                <img src="china-product1.jpg" alt="Produto 3">
+                <h3 style="color: #010101;">Alise meu pelo <strong>Loiro</strong></h3>
+                <p>Alisa meu pelo loiro ➡️ alisa meu pelo, loiro</p>
+                <div class="price" style="color: #3498db;">R$ 69,99</div>
+                <button style="background-color: #010101;">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy; 2023 Alise my pelo store
+    </footer>
+</body>
+</html>
